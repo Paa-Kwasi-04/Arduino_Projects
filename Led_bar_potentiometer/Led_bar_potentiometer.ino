@@ -15,7 +15,8 @@ void loop() {
   for(int i=0;i<=a;i++){
     digitalWrite(i,HIGH);
   }
-    for(int j= 9;j>a;j--){
+    for(int j= 9w
+    ;j>a;j--){
       digitalWrite(j,LOW);
   }
   delay(50);
