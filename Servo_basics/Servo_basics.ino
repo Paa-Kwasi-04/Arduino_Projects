@@ -3,7 +3,7 @@
 Servo myservo;int i,j;
 void setup() {
   // put your setup code here, to run once:
-  myservo.attach(9);  // using the servo library disables PWM function of digital pins
+  myservo.attach(9);  // using the servo library disables PWM function of digital pinsF
   myservo.write(0);
 
 }
