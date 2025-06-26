@@ -28,39 +28,39 @@ void loop() {
   }
   if (command != Key21::NONE) {
     switch (command) {
-      case Key21::KEY_VOL_MINUS:  // to decrease the intensity of the led
-        switch (color){
-          case Key21::KEY_1:
-            rVal -= val ;
-            setColor(rVal,0,0);
-            break;
-          case Key21::KEY_2:
-            bVal -= val;
-            setColor(0,bVal,0);
-            break;
-          case Key21::KEY_3:
-            gVal -= val;
-            setColor(0,0,gVal); 
-            break;           
-        }
-        break;
-
-      case Key21::KEY_VOL_PLUS:  // to increase the intensity of the led
-          switch (color){
-            case Key21::KEY_1:
-              rVal += val;
-              setColor(rVal,0,0);
-              break;
-            case Key21::KEY_2:
-              bVal += val;
-              setColor(0,bVal,0);
-              break;
-            case Key21::KEY_3:
-              gVal += val;
-              setColor(0,0,gVal);
-              break;            
-        }
-        break;
+//      case Key21::KEY_VOL_MINUS:  // to decrease the intensity of the led
+//        switch (color){
+//          case Key21::KEY_1:
+//            rVal -= val ;
+//            setColor(rVal,0,0);
+//            break;
+//          case Key21::KEY_2:
+//            bVal -= val;
+//            setColor(0,bVal,0);
+//            break;
+//          case Key21::KEY_3:
+//            gVal -= val;
+//            setColor(0,0,gVal); 
+//            break;           
+//        }
+//        break;
+//
+//      case Key21::KEY_VOL_PLUS:  // to increase the intensity of the led
+//          switch (color){
+//            case Key21::KEY_1:
+//              rVal += val;
+//              setColor(rVal,0,0);
+//              break;
+//            case Key21::KEY_2:
+//              bVal += val;
+//              setColor(0,bVal,0);
+//              break;
+//            case Key21::KEY_3:
+//              gVal += val;
+//              setColor(0,0,gVal);
+//              break;            
+//        }
+//        break;
 
       case Key21::KEY_1:
         Serial.println("Red");
