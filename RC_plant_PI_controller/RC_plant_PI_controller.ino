@@ -43,7 +43,6 @@ void loop() {
   int Setpoint_raw = analogRead(Pot_Volt_Pin);
   float Setpoint = (Setpoint_raw / (float)ADCmax) * Vref;
   
-
   // compute error
   e = Setpoint - Vcap;
 
@@ -55,11 +54,13 @@ void loop() {
   pwm = constrain(pwm, 0, 255);
   analogWrite(pwmPin, pwm);
 
+  int resolution = 4;
+
   // telemetry
-  Serial.print(Setpoint,2); Serial.print(",");
-  Serial.print(Vcap,2); Serial.print(",");
-  Serial.print(u,2); Serial.print(",");
-  Serial.println(pwm);
+  Serial.print("Setpoint"); Serial.print(":");Serial.print(Setpoint,resolution); Serial.print(" , ");
+  Serial.print("Capacitor Volt"); Serial.print(":");Serial.print(Vcap,resolution); Serial.print(" , ");
+  Serial.print("PID Signal"); Serial.print(":");Serial.print(u,resolution); Serial.print(" , ");
+  Serial.print("PWM Signal"); Serial.print(":");Serial.println(pwm);
 
   // shift states
   e_prev = e;
