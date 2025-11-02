@@ -1,13 +1,14 @@
 // Incremental PI (Tustin-discretized) - Ts = 1 ms
-const int analogPin = A0;
+const int Capacitor_Volt_Pin = A0;
+const int Pot_Volt_Pin = A1;
 const int pwmPin = 11;
 const float Vref = 5.0;
 const int ADCmax = 1023;
 const unsigned long Ts_ms = 1;   // 1 ms sample time
 
 // Discrete incremental coefficients (from Tustin)
-const float b0 = 6.9703;// multiplies e[k]
-const float b1 = -6.6461;// multiplies e[k-1] (note sign is included here)
+const float a = 0.96464;
+const float b = 0.982;
 
 
 // Limits (u in volts)
@@ -16,7 +17,8 @@ const float u_max = 5.0;
 
 float e = 0.0, e_prev = 0.0;
 float u = 0.0, u_prev = 0.0;
-float Setpoint = 1.2; // volts
+
+
 
 unsigned long lastMillis = 0;
 
@@ -33,16 +35,20 @@ void loop() {
   if (millis() - lastMillis < Ts_ms) return;
   lastMillis = millis();
 
-  // measure voltage (volts)
-  int raw = analogRead(analogPin);
+  // measure Capacitor voltage 
+  int raw = analogRead(Capacitor_Volt_Pin);
   float Vcap = (raw / (float)ADCmax) * Vref;
+
+  //Get Setpoint Voltage
+  int Setpoint_raw = analogRead(Pot_Volt_Pin);
+  float Setpoint = (Setpoint_raw / (float)ADCmax) * Vref;
+  
 
   // compute error
   e = Setpoint - Vcap;
 
-  // incremental PI update (discrete Tustin form)
-  float du = B0 * e + B1 * e_prev; // note B1 is negative already
-  u = u_prev + du;
+  //  PI Control Algorithm 
+  u = u_prev + a*(e - b*e_prev); 
 
   // map to PWM and write
   int pwm = (int)round((u / Vref) * 255.0);
@@ -50,9 +56,9 @@ void loop() {
   analogWrite(pwmPin, pwm);
 
   // telemetry
-  Serial.print(millis()); Serial.print(",");
-  Serial.print(Vcap,4); Serial.print(",");
-  Serial.print(u,4); Serial.print(",");
+  Serial.print(Setpoint,2); Serial.print(",");
+  Serial.print(Vcap,2); Serial.print(",");
+  Serial.print(u,2); Serial.print(",");
   Serial.println(pwm);
 
   // shift states
