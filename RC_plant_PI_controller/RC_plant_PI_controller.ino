@@ -58,6 +58,7 @@ void loop() {
 
   // telemetry
   Serial.print("Setpoint"); Serial.print(":");Serial.print(Setpoint,resolution); Serial.print(" , ");
+  Serial.print("Error_Signal"); Serial.print(":");Serial.print(e,resolution); Serial.print(" , ");
   Serial.print("Capacitor Volt"); Serial.print(":");Serial.print(Vcap,resolution); Serial.print(" , ");
   Serial.print("PID Signal"); Serial.print(":");Serial.print(u,resolution); Serial.print(" , ");
   Serial.print("PWM Signal"); Serial.print(":");Serial.println(pwm);
