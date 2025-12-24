@@ -233,7 +233,7 @@ void EventTask(void *parameters) {
 
 **Interrupts:**
 - ISRs must be short
-- Use "FromISR" FreeRTOS functions in ISRs
+- Use FreeRTOS "FromISR" functions in ISRs (e.g., xQueueSendFromISR, xSemaphoreGiveFromISR)
 - Post to queues rather than processing in ISR
 
 **Debugging:**

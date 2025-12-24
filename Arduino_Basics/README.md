@@ -97,7 +97,7 @@ By working through these projects, you will learn:
 2. **Gather components** listed in the project folder
 3. **Open the .ino file** in Arduino IDE
 4. **Install required libraries** (if any)
-   - Go to Tools → Manage Libraries in Arduino IDE
+   - Go to Sketch → Include Library → Manage Libraries in Arduino IDE
    - Search and install needed libraries
 5. **Connect components** according to the circuit diagram (if available)
 6. **Upload the code** to your Arduino board

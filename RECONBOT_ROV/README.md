@@ -66,8 +66,9 @@ UART communication module for:
 
 ### I2C Addresses
 ```
-PCA9548 Multiplexer: 0x72
-INA260 Sensors: 0x40, 0x44, 0x45
+PCA9548 Multiplexer: 0x72 (configurable via A0-A2 pins, default may be 0x70)
+INA260 Sensors: 0x40, 0x44, 0x45 (configurable)
+Note: Actual addresses depend on hardware configuration
 (Check individual driver READMEs for specific addresses)
 ```
 
